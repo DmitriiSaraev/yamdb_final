@@ -1,3 +1,4 @@
+![test](https://github.com/DmitriiSaraev/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 # api_yamdb
 
 api_yamdb
