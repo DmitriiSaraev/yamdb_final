@@ -111,8 +111,7 @@ class AccountViewSet(mixins.UpdateModelMixin,
 
     def get_queryset(self):
         # queryset = User.objects.get(username=self.request.user)
-        queryset = get_object_or_404(User, username=self.request.user)
-        return queryset
+        return get_object_or_404(User, username=self.request.user)
 
     def perform_update(self, serializer):
         if self.request.method == 'DELETE':

@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import exceptions, filters, mixins, viewsets
 from rest_framework.pagination import PageNumberPagination
+
 from reviews.models import Category, Genre, Review, Title
 
 from .filters import TitleFilter
@@ -60,8 +61,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         title_id = self.kwargs.get('title_id')
         title = Title.objects.get(id=title_id)
-        new_queryset = title.reviews.all()
-        return new_queryset
+        return title.reviews.all()
 
     def get_serializer_class(self):
         if self.action in ('create', 'partial_update'):
@@ -87,8 +87,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         review_id = self.kwargs.get('review_id')
         review = Review.objects.get(id=review_id)
-        new_queryset = review.comments.all()
-        return new_queryset
+        return review.comments.all()
 
     def perform_create(self, serializer):
         get_object_or_404(Review, pk=self.kwargs.get('review_id'))

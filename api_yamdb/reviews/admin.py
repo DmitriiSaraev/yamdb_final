@@ -18,10 +18,8 @@ class TitleAdmin(admin.ModelAdmin):
         return genres
 
     def rating(self, name):
-        rating = None
         title = Title.objects.get(name=name)
-        rating = title.reviews.aggregate(Avg('score')).get('score__avg')
-        return rating
+        return title.reviews.aggregate(Avg('score')).get('score__avg')
 
 
 class CategoryAdmin(admin.ModelAdmin):
