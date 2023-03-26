@@ -1,5 +1,3 @@
-# версия docker-compose
-#saraevdmitrii/inf:latest
 version: '3.8'
 
 
