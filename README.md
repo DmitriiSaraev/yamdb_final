@@ -22,36 +22,35 @@ JWT-токен (Отправление confirmation_code на переданны
 Произведения, к которым пишут отзывы (Получить список всех объектов, создать произведение для отзывов, информация об объекте, обновить информацию об объекте, удалить произведение)
 
 Полная документация API (redoc.yaml)
-Клонировать репозиторий и перейти в него в командной строке
 
-Cоздать и активировать виртуальное окружение:
 
-```
-python3 -m venv env
-```
+**Как запустить проект:**
+
+Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-source env/bin/activate
+git clone https://github.com/KlavaD/yamdb_final.git
 ```
 
+**Описание команд для запуска приложения в контейнерах**
+
+Создайте файл .env с переменными окружения для работы с базой данных:
 ```
-python3 -m pip install --upgrade pip
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=< имя базы данных>
+POSTGRES_USER=<логин для подключения к базе данных>
+POSTGRES_PASSWORD=<пароль для подключения к БД (установите свой)>
+DB_HOST=< название сервиса (контейнера)>
+DB_PORT=5432 # порт для подключения к БД 
+```
+Запустите контейнер из папки infra/
+```
+docker-compose up -d --build
 ```
 
-Установить зависимости из файла requirements.txt:
-
+Выполните следующие команды:
 ```
-pip install -r requirements.txt
-```
-
-Выполнить миграции:
-
-```
-python3 manage.py migrate
-```
-
-Запустить проект:
-
-```
-python3 manage.py runserver
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
+docker-compose exec web python manage.py collectstatic --no-input
 ```
