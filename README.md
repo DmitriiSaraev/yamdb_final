@@ -1,6 +1,8 @@
 ![test](https://github.com/DmitriiSaraev/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 # api_yamdb
 
+IP: 158.160.21.12
+
 api_yamdb
 REST API для сервиса YaMDb — базы отзывов о фильмах, книгах и музыке. (Совместный проект 3 студентов Яндекс.Практикум)
 
